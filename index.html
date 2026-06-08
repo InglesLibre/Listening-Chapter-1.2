@@ -2,65 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Listening Part 1 | Multiple Choice (Light Green Theme)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listening Part 1 | Multiple Choice</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      background: #f3faf0;   /* very soft light green background */
-      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f3faf0;
+      font-family: 'Segoe UI', Roboto, sans-serif;
       padding: 2rem 1.2rem;
       color: #1d3e1d;
     }
-
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-    }
-
-    /* header */
+    .container { max-width: 960px; margin: 0 auto; }
     .header {
       background: white;
       border-radius: 28px;
       padding: 1.2rem 1.8rem;
       margin-bottom: 1.8rem;
-      box-shadow: 0 5px 12px rgba(80, 120, 70, 0.08);
       border: 1px solid #d4e8d4;
     }
-
-    h1 {
-      font-size: 1.7rem;
-      font-weight: 700;
-      color: #2c6b2c;
-      letter-spacing: -0.2px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    h1::before {
-      content: "🎧";
-      font-size: 1.8rem;
-    }
-
-    .sub {
-      color: #4e724e;
-      font-size: 0.9rem;
-      margin-top: 8px;
-      border-left: 3px solid #9bcf9b;
-      padding-left: 14px;
-    }
-
+    h1 { font-size: 1.7rem; color: #2c6b2c; display: flex; align-items: center; gap: 10px; }
+    h1::before { content: "🎧"; font-size: 1.8rem; }
+    .sub { color: #4e724e; font-size: 0.9rem; border-left: 3px solid #9bcf9b; padding-left: 14px; margin-top: 8px; }
     .audio-card {
-      background: #ffffffdd;
-      backdrop-filter: blur(2px);
-      background: #ffffff;
+      background: white;
       border-radius: 40px;
       padding: 0.9rem 1.5rem;
       margin-bottom: 1.8rem;
@@ -70,183 +34,33 @@
       justify-content: space-between;
       gap: 15px;
       border: 1px solid #cae3ca;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
     }
-
-    .audio-label {
-      font-weight: 600;
-      background: #eaf5ea;
-      padding: 6px 14px;
-      border-radius: 60px;
-      font-size: 0.8rem;
-      color: #2a652a;
-    }
-
-    audio {
-      min-width: 240px;
-      max-width: 100%;
-      border-radius: 60px;
-      outline: none;
-    }
-
-    audio::-webkit-media-controls-panel {
-      background-color: #eef5ec;
-    }
-
-    /* question grid */
-    .questions-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 1.3rem;
-    }
-
+    .audio-label { font-weight: 600; background: #eaf5ea; padding: 6px 14px; border-radius: 60px; font-size: 0.8rem; }
+    audio { min-width: 240px; max-width: 100%; border-radius: 60px; }
+    .questions-grid { display: flex; flex-direction: column; gap: 1.3rem; }
     .question-card {
-      background: #ffffff;
+      background: white;
       border-radius: 28px;
       padding: 1.2rem 1.6rem;
-      transition: all 0.2s;
       border: 1px solid #cde0cd;
-      box-shadow: 0 2px 8px rgba(70, 100, 60, 0.05);
     }
-
-    .question-number {
-      display: inline-block;
-      background: #e0f0e0;
-      color: #2b6b2b;
-      font-weight: 700;
-      font-size: 0.75rem;
-      padding: 4px 12px;
-      border-radius: 40px;
-      margin-bottom: 12px;
-      letter-spacing: 0.3px;
-    }
-
-    .question-text {
-      font-weight: 600;
-      font-size: 1rem;
-      margin-bottom: 1rem;
-      color: #1b431b;
-      line-height: 1.4;
-    }
-
-    .options {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      padding-left: 6px;
-    }
-
-    .option {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      cursor: pointer;
-      padding: 8px 10px;
-      border-radius: 60px;
-      transition: background 0.1s;
-    }
-
-    .option:hover {
-      background: #f4fcf2;
-    }
-
-    input[type="radio"] {
-      accent-color: #4cae4c;
-      width: 18px;
-      height: 18px;
-      margin-top: 2px;
-      flex-shrink: 0;
-    }
-
-    .option-text {
-      font-size: 0.93rem;
-      line-height: 1.4;
-      color: #2c482c;
-    }
-
-    /* feedback area & score */
-    .feedback-line {
-      font-size: 0.75rem;
-      margin-top: 12px;
-      padding-left: 28px;
-      font-weight: 500;
-    }
-
-    .correct {
-      color: #2a6b2a;
-    }
-
-    .incorrect {
-      color: #c0452c;
-    }
-
-    .action-bar {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      margin: 2rem 0 1rem;
-      gap: 15px;
-    }
-
+    .question-number { background: #e0f0e0; color: #2b6b2b; font-weight: 700; font-size: 0.75rem; padding: 4px 12px; border-radius: 40px; display: inline-block; margin-bottom: 12px; }
+    .question-text { font-weight: 600; margin-bottom: 1rem; color: #1b431b; }
+    .options { display: flex; flex-direction: column; gap: 10px; padding-left: 6px; }
+    .option { display: flex; align-items: flex-start; gap: 12px; cursor: pointer; padding: 8px 10px; border-radius: 60px; }
+    .option:hover { background: #f4fcf2; }
+    input[type="radio"] { accent-color: #4cae4c; width: 18px; height: 18px; }
+    .option-text { font-size: 0.93rem; color: #2c482c; }
+    .feedback-line { font-size: 0.75rem; margin-top: 12px; padding-left: 28px; }
+    .action-bar { display: flex; flex-wrap: wrap; justify-content: space-between; margin: 2rem 0 1rem; gap: 15px; }
     button {
-      background: #eef4ea;
-      border: 1px solid #bdd6bd;
-      padding: 10px 28px;
-      border-radius: 60px;
-      font-weight: 600;
-      font-size: 0.85rem;
-      color: #2e632e;
-      cursor: pointer;
-      transition: 0.2s;
-      font-family: inherit;
+      background: #eef4ea; border: 1px solid #bdd6bd; padding: 10px 28px; border-radius: 60px;
+      font-weight: 600; font-size: 0.85rem; color: #2e632e; cursor: pointer;
     }
-
-    button:hover {
-      background: #e2f0e0;
-      border-color: #8bc48b;
-      transform: translateY(-1px);
-    }
-
-    .btn-primary {
-      background: #4caf50;
-      border-color: #3e9a3e;
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background: #3e9e42;
-    }
-
-    .score-panel {
-      background: #eef8ec;
-      border-radius: 40px;
-      padding: 0.8rem 1.5rem;
-      text-align: center;
-      font-weight: 700;
-      font-size: 0.9rem;
-      color: #235e23;
-      border: 1px solid #cbe6cb;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 2rem;
-      font-size: 0.7rem;
-      color: #6f946f;
-    }
-
-    @media (max-width: 600px) {
-      body {
-        padding: 1rem;
-      }
-      .question-card {
-        padding: 1rem;
-      }
-      .option {
-        padding: 6px 4px;
-      }
-    }
+    button:hover { background: #e2f0e0; }
+    .btn-primary { background: #4caf50; border-color: #3e9a3e; color: white; }
+    .score-panel { background: #eef8ec; border-radius: 40px; padding: 0.8rem 1.5rem; text-align: center; font-weight: 700; border: 1px solid #cbe6cb; }
+    footer { text-align: center; margin-top: 2rem; font-size: 0.7rem; color: #6f946f; }
   </style>
 </head>
 <body>
@@ -256,17 +70,16 @@
     <div class="sub">You will hear people talking in eight different situations. Choose the best answer (A, B or C).</div>
   </div>
 
-  <!-- audio player section (MP3 file: correct raw GitHub URL) -->
+  <!-- audio player with RELATIVE path (both files in same folder) -->
   <div class="audio-card">
     <span class="audio-label">🎵 Listening track 1.2</span>
     <audio controls preload="metadata">
-      <source src="https://raw.githubusercontent.com/InglesLibre/Listening-Chapter-1.2/main/CH1_2.mp3" type="audio/mpeg">
-      Your browser does not support the audio element. Please use a compatible browser.
+      <source src="CH1_2.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
     </audio>
     <span style="font-size:0.7rem; color:#537a53;">ⓘ listen to the whole recording</span>
   </div>
 
-  <!-- questions will be injected here -->
   <div id="questionsContainer" class="questions-grid"></div>
 
   <div class="action-bar">
@@ -278,189 +91,68 @@
 </div>
 
 <script>
-  // Question bank (exactly as described)
   const questions = [
-    {
-      id: 1,
-      text: "You hear two people talking about a friend of theirs. What does the woman say about the friend?",
-      options: [
-        "A He talks a lot about his lifestyle.",
-        "B He leads a comfortable lifestyle.",
-        "C He may change his lifestyle."
-      ],
-      correct: "C He may change his lifestyle."
-    },
-    {
-      id: 2,
-      text: "You overhear a man talking to a friend on his phone. Why is he phoning?",
-      options: [
-        "A to persuade his friend to do something",
-        "B to ask for some information",
-        "C to change an arrangement"
-      ],
-      correct: "C to change an arrangement"
-    },
-    {
-      id: 3,
-      text: "You hear a woman talking about her family’s financial situation. What is she going to do?",
-      options: [
-        "A ask someone to help her",
-        "B try to sell something",
-        "C look for a new job"
-      ],
-      correct: "B try to sell something"
-    },
-    {
-      id: 4,
-      text: "You hear a man talking about his job. Who is the man?",
-      options: [
-        "A a hotel manager",
-        "B a hotel receptionist",
-        "C a hotel doorman"
-      ],
-      correct: "C a hotel doorman"
-    },
-    {
-      id: 5,
-      text: "You hear two people talking about the value of their time spent living abroad. What do they agree about?",
-      options: [
-        "A It has helped them develop their personality.",
-        "B It has made them appreciate their own country.",
-        "C It has given them better job prospects."
-      ],
-      correct: "A It has helped them develop their personality."
-    },
-    {
-      id: 6,
-      text: "You hear a man talking on the radio. What is he doing?",
-      options: [
-        "A reviewing a book",
-        "B advertising a product",
-        "C reading a news report"
-      ],
-      correct: "B advertising a product"
-    },
-    {
-      id: 7,
-      text: "You hear two people talking about the village they both live in. What does the woman think of the village?",
-      options: [
-        "A People are not always very friendly.",
-        "B Some of the roads are dangerous.",
-        "C There are not enough children."
-      ],
-      correct: "A People are not always very friendly."
-    },
-    {
-      id: 8,
-      text: "You hear a man talking about a country in which he once lived. What surprised him about the people?",
-      options: [
-        "A the importance they give to clothes",
-        "B the type of food they eat",
-        "C their attitude to work"
-      ],
-      correct: "C their attitude to work"
-    }
+    { id: 1, text: "You hear two people talking about a friend of theirs. What does the woman say about the friend?", options: ["A He talks a lot about his lifestyle.", "B He leads a comfortable lifestyle.", "C He may change his lifestyle."], correct: "C He may change his lifestyle." },
+    { id: 2, text: "You overhear a man talking to a friend on his phone. Why is he phoning?", options: ["A to persuade his friend to do something", "B to ask for some information", "C to change an arrangement"], correct: "C to change an arrangement" },
+    { id: 3, text: "You hear a woman talking about her family's financial situation. What is she going to do?", options: ["A ask someone to help her", "B try to sell something", "C look for a new job"], correct: "B try to sell something" },
+    { id: 4, text: "You hear a man talking about his job. Who is the man?", options: ["A a hotel manager", "B a hotel receptionist", "C a hotel doorman"], correct: "C a hotel doorman" },
+    { id: 5, text: "You hear two people talking about the value of their time spent living abroad. What do they agree about?", options: ["A It has helped them develop their personality.", "B It has made them appreciate their own country.", "C It has given them better job prospects."], correct: "A It has helped them develop their personality." },
+    { id: 6, text: "You hear a man talking on the radio. What is he doing?", options: ["A reviewing a book", "B advertising a product", "C reading a news report"], correct: "B advertising a product" },
+    { id: 7, text: "You hear two people talking about the village they both live in. What does the woman think of the village?", options: ["A People are not always very friendly.", "B Some of the roads are dangerous.", "C There are not enough children."], correct: "A People are not always very friendly." },
+    { id: 8, text: "You hear a man talking about a country in which he once lived. What surprised him about the people?", options: ["A the importance they give to clothes", "B the type of food they eat", "C their attitude to work"], correct: "C their attitude to work" }
   ];
 
-  // Store user selections (index of question -> selected answer string)
   let userAnswers = new Array(8).fill("");
-
-  // DOM elements
   const container = document.getElementById("questionsContainer");
   const checkBtn = document.getElementById("checkBtn");
   const resetBtn = document.getElementById("resetBtn");
   const scorePanel = document.getElementById("scorePanel");
 
-  // Helper: render all questions with radio groups
   function renderQuestions() {
-    if (!container) return;
     container.innerHTML = "";
     questions.forEach((q, idx) => {
       const card = document.createElement("div");
       card.className = "question-card";
-      card.dataset.qidx = idx;
-
-      const numberSpan = document.createElement("div");
-      numberSpan.className = "question-number";
-      numberSpan.innerText = `Question ${q.id}`;
-
-      const questionTextDiv = document.createElement("div");
-      questionTextDiv.className = "question-text";
-      questionTextDiv.innerText = q.text;
-
-      const optionsDiv = document.createElement("div");
-      optionsDiv.className = "options";
-
-      // create radio group
-      q.options.forEach((opt, optIdx) => {
-        const radioId = `q${idx}_opt${optIdx}`;
+      card.innerHTML = `
+        <div class="question-number">Question ${q.id}</div>
+        <div class="question-text">${q.text}</div>
+        <div class="options" id="options-${idx}"></div>
+        <div class="feedback-line" id="fb_${idx}"></div>
+      `;
+      const optionsDiv = card.querySelector(`#options-${idx}`);
+      q.options.forEach(opt => {
         const label = document.createElement("label");
         label.className = "option";
-        label.setAttribute("for", radioId);
-
         const radio = document.createElement("input");
         radio.type = "radio";
         radio.name = `question_${idx}`;
         radio.value = opt;
-        radio.id = radioId;
-        // pre-select if user has previously chosen
-        if (userAnswers[idx] === opt) {
-          radio.checked = true;
-        }
-
-        const spanText = document.createElement("span");
-        spanText.className = "option-text";
-        spanText.innerText = opt;
-
-        label.appendChild(radio);
-        label.appendChild(spanText);
-        optionsDiv.appendChild(label);
-
-        // event listener to store answer when changed
+        if (userAnswers[idx] === opt) radio.checked = true;
         radio.addEventListener("change", (e) => {
           if (e.target.checked) {
             userAnswers[idx] = opt;
-            // remove any existing feedback line for this question (visual reset)
-            const existingFeedback = card.querySelector(".feedback-line");
-            if (existingFeedback) existingFeedback.remove();
+            document.getElementById(`fb_${idx}`).innerHTML = "";
+            saveToLocalStorage();
           }
         });
+        const span = document.createElement("span");
+        span.className = "option-text";
+        span.innerText = opt;
+        label.appendChild(radio);
+        label.appendChild(span);
+        optionsDiv.appendChild(label);
       });
-
-      card.appendChild(numberSpan);
-      card.appendChild(questionTextDiv);
-      card.appendChild(optionsDiv);
-
-      // show feedback line if the answer was already checked before? we'll not display initially,
-      // but we will show only after "Check Answers" click.
-      // Also we add an empty feedback container placeholder
-      const feedbackDiv = document.createElement("div");
-      feedbackDiv.className = "feedback-line";
-      feedbackDiv.id = `fb_${idx}`;
-      card.appendChild(feedbackDiv);
-
       container.appendChild(card);
     });
   }
 
-  // clear all feedback lines (remove existing messages)
-  function clearAllFeedback() {
-    for (let i = 0; i < questions.length; i++) {
-      const fbDiv = document.getElementById(`fb_${i}`);
-      if (fbDiv) fbDiv.innerHTML = "";
-    }
-  }
-
-  // compute score and show feedback (green/red)
   function evaluateAndShowScore() {
     let correctCount = 0;
-    // first calculate correctness and store messages
     for (let i = 0; i < questions.length; i++) {
       const userChoice = userAnswers[i];
       const correctAns = questions[i].correct;
-      const isCorrect = (userChoice === correctAns);
-      if (isCorrect && userChoice !== "") correctCount++;
-
+      const isCorrect = (userChoice === correctAns && userChoice !== "");
+      if (isCorrect) correctCount++;
       const fbDiv = document.getElementById(`fb_${i}`);
       if (fbDiv) {
         if (!userChoice || userChoice === "") {
@@ -475,55 +167,21 @@
         }
       }
     }
-    // update score panel
     scorePanel.innerHTML = `📊 Your score: ${correctCount} / ${questions.length}`;
-    return correctCount;
+    saveToLocalStorage();
   }
 
-  // reset all answers and clear selections (full reset)
   function resetAllAnswers() {
     userAnswers.fill("");
-    // reset radio buttons in the DOM
+    renderQuestions();
     for (let i = 0; i < questions.length; i++) {
-      const radios = document.querySelectorAll(`input[name="question_${i}"]`);
-      radios.forEach(radio => {
-        radio.checked = false;
-      });
       const fbDiv = document.getElementById(`fb_${i}`);
       if (fbDiv) fbDiv.innerHTML = "";
     }
-    // reset score display without marking answers
     scorePanel.innerHTML = `📊 Your score: 0 / ${questions.length}`;
-    // optional: remove any extra feedback styling
-    clearAllFeedback();
+    saveToLocalStorage();
   }
 
-  // check answers + show feedback
-  function checkAnswersAndScore() {
-    // for any unanswered questions, show that they are missing
-    let allSelected = true;
-    for (let i = 0; i < questions.length; i++) {
-      if (!userAnswers[i] || userAnswers[i] === "") {
-        allSelected = false;
-        break;
-      }
-    }
-    // display feedback and score anyway
-    evaluateAndShowScore();
-    if (!allSelected) {
-      // we don't block, but just give info
-      const panelMsg = scorePanel.innerHTML;
-      if (!panelMsg.includes("⚠️")) {
-        // small notification but not intrusive
-        scorePanel.style.backgroundColor = "#fff3e0";
-        setTimeout(() => {
-          if (scorePanel) scorePanel.style.backgroundColor = "#eef8ec";
-        }, 1200);
-      }
-    }
-  }
-
-  // Optional: save answers to localStorage, to remember between page reloads
   function saveToLocalStorage() {
     localStorage.setItem("listeningUserAnswers", JSON.stringify(userAnswers));
   }
@@ -538,49 +196,13 @@
         }
       } catch(e) {}
     }
-    // re-render the UI to show saved selections
-    renderQuestions();    // re-renders fresh with stored answers
   }
 
-  // event listeners for check & reset
-  function bindEvents() {
-    if (checkBtn) {
-      checkBtn.addEventListener("click", () => {
-        checkAnswersAndScore();
-        saveToLocalStorage();
-      });
-    }
-    if (resetBtn) {
-      resetBtn.addEventListener("click", () => {
-        resetAllAnswers();
-        userAnswers.fill("");
-        saveToLocalStorage();
-      });
-    }
-    // also whenever a radio is changed, we save to localStorage
-    document.addEventListener("change", (e) => {
-      if (e.target && e.target.type === "radio" && e.target.name && e.target.name.startsWith("question_")) {
-        // userAnswers already updated via radio change listener (inside render). we also save.
-        saveToLocalStorage();
-        // remove feedback for that specific question when user changes (better ux)
-        const idxMatch = e.target.name.match(/\d+/);
-        if (idxMatch) {
-          const idx = parseInt(idxMatch[0], 10);
-          const fbDiv = document.getElementById(`fb_${idx}`);
-          if (fbDiv) fbDiv.innerHTML = "";
-        }
-      }
-    });
-  }
-
-  // initialize page: load stored answers, render, attach events
   function init() {
-    loadFromLocalStorage();     // loads userAnswers from localStorage
-    renderQuestions();          // creates fresh DOM with stored answers
-    bindEvents();               // attach check/reset/auto-save
-    // clear feedback and score initially (no annoying red messages before check)
-    clearAllFeedback();
-    scorePanel.innerHTML = `📊 Your score: 0 / ${questions.length}`;
+    loadFromLocalStorage();
+    renderQuestions();
+    checkBtn.addEventListener("click", evaluateAndShowScore);
+    resetBtn.addEventListener("click", resetAllAnswers);
   }
 
   init();
